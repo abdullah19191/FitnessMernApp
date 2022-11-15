@@ -3,7 +3,7 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const workoutRoutes = require('./routes/workout')
 const userRoutes = require('./routes/user')
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 4000
 
 // express app
 const app = express()
@@ -11,11 +11,11 @@ const app = express()
 //middleware
 app.use(express.json())
 
-// // Sercer Production
-// if(process.env.NODE_ENV === "production"){
-//     app.use(express.static(path.join("frontend/build")))
-//     app.get("*",(req,res)=> res.sendFile(path.resolve(__dirname,"frontend","build","index.html")))
-// }
+// Sercer Production
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static(path.join("frontend/build")))
+    app.get("*",(req,res)=> res.sendFile(path.resolve(__dirname,"frontend","build","index.html")))
+}
 
 app.use((req,res,next)=>{
     console.log(req.path,req.method);
