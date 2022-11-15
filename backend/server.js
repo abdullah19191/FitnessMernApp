@@ -30,7 +30,7 @@ app.use('/api/user',userRoutes)
 mongoose.connect(process.env.MONG_URI)
    .then(()=>{
     // listen for Request
-app.listen(process.env.PORT,()=> {
+app.listen(port,()=> {
     console.log('listening to port',port);
 })
    })
